@@ -16,7 +16,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: windowScene)
+        //UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        //이 부분은 iOS15에서는 안쓰고
+        //UINavigationController.barTintColor = UIColor.orange
+        //찾아봤지만 이건 안써도 될 것 같음
+
+        
+        let controller = QuestionController()
+        let navigationController = UINavigationController(rootViewController: controller)
+        //여기에서 orange로 바꿔주었음
+        let navigationBar = navigationController.navigationBar
+        
+        //navigationController.navigationBar.backgroundColor = .orange
+        
+        //navigationController title color를 white로 바꾸고 싶음
+        //UINavigationController.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+//        navigationController.navigationBar.barTintColor = .white
+//        navigationController.navigationBar.tintColor = .white
+//        navigationController.editButtonItem.tintColor = .white
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground() // 올리면 반투명
+        //appearance.backgroundColor = .blue
+        navigationBar.standardAppearance = appearance;
+        navigationBar.backgroundColor = .systemPink
+        navigationBar.isTranslucent = false
+        navigationBar.barTintColor = .white
+        navigationBar.tintColor = .white
+        
+        //navigationController.navigationBar.standardAppearance = appearance
+        //navigationController.navigationBar.scrollEdgeAppearance = appearance
+        
+        // 지금 어디에서 헤매고 있냐면, navigationBar의 글자색을 흰색으로 바꾸고 싶음.
+        
+        window?.rootViewController = navigationController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
