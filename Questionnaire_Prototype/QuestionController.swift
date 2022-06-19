@@ -19,10 +19,33 @@ class QuestionController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
 
 
+}
+
+class AnswerCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder: ) has not been implemented")
+    }
+    
+    let nameLable: UILabel = {
+        let label = UILabel()
+        label.text = "Sample Answer"
+        return label
+    }()
+    
+    func setupViews() {
+        addSubview(nameLable)
+        addConstraint(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", metrics: nil, views: ["v0":nameLable]))
+        addConstraint(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":nameLable]))
+    }
+    
 }
 

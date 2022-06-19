@@ -41,16 +41,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground() // 올리면 반투명
         //appearance.backgroundColor = .blue
-        navigationBar.standardAppearance = appearance;
-        navigationBar.backgroundColor = .systemPink
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = .white
-        navigationBar.tintColor = .white
+        //navigationBar.standardAppearance = appearance;
+        navigationBar.backgroundColor = .lightGray
+        navigationBar.isTranslucent = true
+        //navigationBar.barTintColor = .white
+        //navigationBar.tintColor = .white
         
         //navigationController.navigationBar.standardAppearance = appearance
         //navigationController.navigationBar.scrollEdgeAppearance = appearance
         
         // 지금 어디에서 헤매고 있냐면, navigationBar의 글자색을 흰색으로 바꾸고 싶음.
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
+        navigationController.navigationBar.titleTextAttributes = textAttributes
         
         window?.rootViewController = navigationController
     }
